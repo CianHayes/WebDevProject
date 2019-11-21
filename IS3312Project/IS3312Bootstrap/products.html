@@ -9,14 +9,35 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<script>
+	function myFunction() {
+    var input, filter, cards, cardContainer, title, i;
+    input = document.getElementById("myFilter");
+    filter = input.value.toUpperCase();
+    cardContainer = document.getElementById("pItems");
+    cards = cardContainer.getElementsByClassName("card");
+    for (i = 0; i < cards.length; i++) {
+        title = cards[i].querySelector(".card-body");
+        if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+
+
+
+
+	</script>
 	<link href="style.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-light">
 
 <!-- Navigation -->
 <!-- (expand-md) is pixel-point expands to full-page navigation -->
 <!-- (navbar-light) & (bg-light) for navigation formatting -->
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-md navbar-light bg-white sticky-top">
 	<!-- Insert Logo -->
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#" style="font-family:Georgia, serif; font-size: 32px;">
@@ -49,43 +70,23 @@
 	</div>
 </nav>
 
-<!-- <div class="container-fluid padding">
-  <br>
-  <br>
-  <div class="row ml-5 mr-5 mt-4 mb-1">
-    <div class="col-md-1 h2">
-      Products
-    </div>
-    <div class="col-md-11">
-      <button type="button" class="btn btn-outline-primary float-right" name="button">Click Me</button>
-    </div>
-  </div>
-</div> -->
 
-<!-- <div class="container">
-  <h2>Bootstrap 4 Collapsible List Group Example</h2>
-  <div class="panel-group">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" href="#collapse1">Collapsible list group</a>
-        </h4>
-      </div>
-      <div id="collapse1" class="panel-collapse collapse">
-        <ul class="list-group">
-          <li class="list-group-item">One</li>
-          <li class="list-group-item">Two</li>
-          <li class="list-group-item">Three</li>
-        </ul>
-        <div class="panel-footer">Footer</div>
-      </div>
-    </div>
-  </div>
-</div> -->
+<!-- PARENT CONTAINER -->
 
 <div class="container-fluid px-5 py-5">
   <div class="row">
     <div class="col-xs-3 col-md-3 col-lg-3">
+
+			<div class="jumbotron bg-white">
+
+				<div class="row">
+		    <div class="col-sm-12 mb-3">
+		      <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for print names..">
+		    </div>
+		  	</div>
+
+					<br>
+
 			<!-- <div class="panel-group">
 		    <div class="panel panel-default">
 		      <div class="panel-heading">
@@ -105,36 +106,83 @@
 		  </div> -->
 
 
+<!--FILTER BY STYLE -->
+			<div class="container">
+			  <h3>Filter By:</h3>
+			  <div class="panel-group">
+			    <div class="panel panel-default">
+			      <div class="panel-heading">
+			        <h5 class="panel-title">
+			          <a data-toggle="collapse" href="#collapse1">Style</a>
+			        </h5>
+			      </div>
+			      <div id="collapse1" class="panel-collapse collapse">
+			        <ul class="list-group list-group-flush">
+			          <li class="list-group-item">Abstract</li>
+			          <li class="list-group-item">Impressionism</li>
+			          <li class="list-group-item">Photorealism</li>
+								<li class="list-group-item">Realism</li>
+			        </ul>
+			    </div>
+			  </div>
+				</div>
+				</div>
 
-			<div class="card sidebar-nav">
-        <ul class="list-group list-group-flush">
-          	<li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-      </div>
 
+<!--FILTER BY ARTIST -->
+			<div class="container">
+			 <div class="panel-group">
+				 <div class="panel panel-default">
+					 <div class="panel-heading">
+						 <h5 class="panel-title">
+							 <a data-toggle="collapse" href="#collapse2">Artist</a>
+						 </h5>
+					 </div>
+					 <div id="collapse2" class="panel-collapse collapse">
+						 <ul class="list-group list-group-flush">
+							 <li class="list-group-item">Dali</li>
+							 <li class="list-group-item">Pollock</li>
+							 <li class="list-group-item">Renoir</li>
+							 <li class="list-group-item">Monet</li>
+							 <li class="list-group-item">Bell</li>
+							 <li class="list-group-item">Goings</li>
+							 <li class="list-group-item">Courbet</li>
+							 <li class="list-group-item">Manet</li>
+						 </ul>
+				 </div>
+			 </div>
+			 </div>
+			</div>
+
+
+	</div>
     </div>
-    <div class="col-9 col-xs-9 col-md-9 col-lg-9">
-      <div class="jumbotron jumbotron-fluid">
-        <h1 class="display-4">Products</h1>
-        <p>Shop by style or artist</p>
-				<br>
 
+<!--PRODUCTS HEADER -->
+    <div class="col-9 col-xs-9 col-md-9 col-lg-9">
+      <div class="jumbotron jumbotron-fluid rounded bg-white">
+        <h3 class="display-4">Products</h3>
       </div>
+
+<!--PRODUCT CARD CONTAINER -->
 			<div class="album">
 			      <div class="container">
 
-			        <div class="row">
-			          <div class="col-9 col-md-4 col-sm-6">
+
+									<br>
+
+			        <div class="row" id="pItems">
+
+
+
+<!--PRODUCT CARDS -->
+								<div class="col-md-4 col-sm-6">
 			            <div class="card mb-4 box-shadow">
-			              <img class="card-img-top" src="img/greyRectangle.png" alt="Card image cap">
+			              <img class="card-img-top" src="img\artprints\Abstract\dali_the_burning_giraffe.jpg" alt="Card image cap">
 			              <div class="card-body">
-			                <p class="card-text">Product Name</p>
+			                <p class="card-text">The Burning Giraffe</p>
 			                <div class="card-text">
-			                  <p class="card-text pb-3"> Product Details</p>
+			                  <p class="card-text pb-3">Salvador Dali</p>
 			                </div>
 			                <div class="d-flex justify-content-between align-items-center">
 			                  <div class="btn-group">
@@ -148,11 +196,11 @@
 			          </div>
 			          <div class="col-md-4 col-sm-6">
 			            <div class="card mb-4 box-shadow">
-			              <img class="card-img-top" src="img/greyRectangle.png" alt="Card image cap">
+			              <img class="card-img-top" src="img\artprints\Abstract\dali_the_persistence_of_memory.jpg" alt="Card image cap">
 			              <div class="card-body">
-			                <p class="card-text">Product Name</p>
+			                <p class="card-text">The Persistence of Memory</p>
 			                <div class="card-text">
-			                  <p class="card-text pb-3"> Product Details</p>
+			                  <p class="card-text pb-3">Salvador Dali</p>
 			                </div>
 			                <div class="d-flex justify-content-between align-items-center">
 			                  <div class="btn-group">
@@ -166,11 +214,11 @@
 			          </div>
 			          <div class="col-md-4 col-sm-6">
 			            <div class="card mb-4 box-shadow">
-			              <img class="card-img-top" src="img/greyRectangle.png" alt="Card image cap">
+			              <img class="card-img-top" src="img\artprints\Abstract\pollock_convergence.jpg" alt="Card image cap">
 			              <div class="card-body">
-			                <p class="card-text">Product Name</p>
+			                <p class="card-text">Convergence</p>
 			                <div class="card-text">
-			                  <p class="card-text pb-3"> Product Details</p>
+			                  <p class="card-text pb-3">Jackson Pollock</p>
 			                </div>
 			                <div class="d-flex justify-content-between align-items-center">
 			                  <div class="btn-group">
@@ -185,11 +233,11 @@
 
 			          <div class="col-md-4 col-sm-6">
 			            <div class="card mb-4 box-shadow">
-			              <img class="card-img-top" src="img/greyRectangle.png" alt="Card image cap">
+			              <img class="card-img-top" src="img\artprints\Abstract\pollock_number31_1950.jpg" alt="Card image cap">
 			              <div class="card-body">
-			                <p class="card-text">Product Name</p>
+			                <p class="card-text">Number 31, 1950</p>
 			                <div class="card-text">
-			                  <p class="card-text pb-3"> Product Details</p>
+			                  <p class="card-text pb-3">Jackson Pollock</p>
 			                </div>
 			                <div class="d-flex justify-content-between align-items-center">
 			                  <div class="btn-group">
@@ -203,11 +251,11 @@
 			          </div>
 			          <div class="col-md-4 col-sm-6">
 			            <div class="card mb-4 box-shadow">
-			              <img class="card-img-top" src="img/greyRectangle.png" alt="Card image cap">
+			              <img class="card-img-top" src="img\artprints\Impressionism\monet_landscape_near_monte_carlo.jpg" alt="Card image cap">
 			              <div class="card-body">
-			                <p class="card-text">Product Name</p>
+			                <p class="card-text">Landscape Near Monte Carlo</p>
 			                <div class="card-text">
-			                  <p class="card-text pb-3"> Product Details</p>
+			                  <p class="card-text pb-3">Claude Monet</p>
 			                </div>
 			                <div class="d-flex justify-content-between align-items-center">
 			                  <div class="btn-group">
@@ -221,11 +269,201 @@
 			          </div>
 			          <div class="col-md-4 col-sm-6">
 			            <div class="card mb-4 box-shadow">
-			              <img class="card-img-top" src="img/greyRectangle.png" alt="Card image cap">
+			              <img class="card-img-top" src="img\artprints\Impressionism\monet_sunset_in_venice.jpg" alt="Card image cap">
 			              <div class="card-body">
-			                <p class="card-text">Product Name</p>
+			                <p class="card-text">Sunset in Venice</p>
 			                <div class="card-text">
-			                  <p class="card-text pb-3"> Product Details</p>
+			                  <p class="card-text pb-3">Claude Monet</p>
+			                </div>
+			                <div class="d-flex justify-content-between align-items-center">
+			                  <div class="btn-group">
+			                    <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+			                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+			                  </div>
+
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+
+								<div class="col-md-4 col-sm-6">
+			            <div class="card mb-4 box-shadow">
+			              <img  class="card-img-top" src="img\artprints\Impressionism\renoir_Bal_du_moulin_de_la_Galette.jpg" alt="Card image cap">
+			              <div class="card-body">
+			                <p class="card-text">Bal du Moulin de la Galette</p>
+			                <div class="card-text">
+			                  <p class="card-text pb-3">Pierre-Auguste Renoir</p>
+			                </div>
+			                <div class="d-flex justify-content-between align-items-center">
+			                  <div class="btn-group">
+			                    <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+			                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+			                  </div>
+
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+
+								<div class="col-md-4 col-sm-6">
+			            <div class="card mb-4 box-shadow">
+			              <img  class="card-img-top" src="img\artprints\Impressionism\renoir_environs_of_briery.jpg" alt="Card image cap">
+			              <div class="card-body">
+			                <p class="card-text">Environs of Briery</p>
+			                <div class="card-text">
+			                  <p class="card-text pb-3">Pierre-Auguste Renoir</p>
+			                </div>
+			                <div class="d-flex justify-content-between align-items-center">
+			                  <div class="btn-group">
+			                    <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+			                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+			                  </div>
+
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+
+								<div class="col-md-4 col-sm-6">
+			            <div class="card mb-4 box-shadow">
+			              <img  class="card-img-top" src="img\artprints\photorealism\bell_gumball_II.jpg" alt="Card image cap">
+			              <div class="card-body">
+			                <p class="card-text">Gumball II</p>
+			                <div class="card-text">
+			                  <p class="card-text pb-3">Charles Bell</p>
+			                </div>
+			                <div class="d-flex justify-content-between align-items-center">
+			                  <div class="btn-group">
+			                    <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+			                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+			                  </div>
+
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+
+								<div class="col-md-4 col-sm-6">
+			            <div class="card mb-4 box-shadow">
+			              <img  class="card-img-top" src="img\artprints\photorealism\bell_kandy_kane_rainbow.jpg" alt="Card image cap">
+			              <div class="card-body">
+			                <p class="card-text">Kandy Kane Rainbow</p>
+			                <div class="card-text">
+			                  <p class="card-text pb-3">Charles Bell</p>
+			                </div>
+			                <div class="d-flex justify-content-between align-items-center">
+			                  <div class="btn-group">
+			                    <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+			                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+			                  </div>
+
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+
+								<div class="col-md-4 col-sm-6">
+			            <div class="card mb-4 box-shadow">
+			              <img  class="card-img-top" src="img\artprints\photorealism\goings_blue_diner_with_figures.jpg" alt="Card image cap">
+			              <div class="card-body">
+			                <p class="card-text">Blue Diner With Figures</p>
+			                <div class="card-text">
+			                  <p class="card-text pb-3">Ralph Goings</p>
+			                </div>
+			                <div class="d-flex justify-content-between align-items-center">
+			                  <div class="btn-group">
+			                    <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+			                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+			                  </div>
+
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+
+								<div class="col-md-4 col-sm-6">
+			            <div class="card mb-4 box-shadow">
+			              <img   class="card-img-top" src="img\artprints\photorealism\goings_still_life_with_spoons.jpg" alt="Card image cap">
+			              <div class="card-body">
+			                <p class="card-text">Still Life With Spoons</p>
+			                <div class="card-text">
+			                  <p class="card-text pb-3">Ralph Goings</p>
+			                </div>
+			                <div class="d-flex justify-content-between align-items-center">
+			                  <div class="btn-group">
+			                    <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+			                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+			                  </div>
+
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+
+								<div class="col-md-4 col-sm-6">
+			            <div class="card mb-4 box-shadow">
+			              <img  class="card-img-top" src="img\artprints\realism\courbet_the_desperate_man.jfif" alt="Card image cap">
+			              <div class="card-body">
+			                <p class="card-text">The Desperate Man</p>
+			                <div class="card-text">
+			                  <p class="card-text pb-3">Gustave Courbet</p>
+			                </div>
+			                <div class="d-flex justify-content-between align-items-center">
+			                  <div class="btn-group">
+			                    <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+			                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+			                  </div>
+
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+
+								<div class="col-md-4 col-sm-6">
+			            <div class="card mb-4 box-shadow">
+			              <img  class="card-img-top" src="img\artprints\realism\courbet_the_trout.jpg" alt="Card image cap">
+			              <div class="card-body">
+			                <p class="card-text">The Trout</p>
+			                <div class="card-text">
+			                  <p class="card-text pb-3">Gustave Courbet</p>
+			                </div>
+			                <div class="d-flex justify-content-between align-items-center">
+			                  <div class="btn-group">
+			                    <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+			                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+			                  </div>
+
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+
+								<div class="col-md-4 col-sm-6">
+			            <div class="card mb-4 box-shadow">
+			              <img  class="card-img-top" src="img\artprints\realism\manet_lola_de_valence.jpg" alt="Card image cap">
+			              <div class="card-body">
+			                <p class="card-text">Lola de Valence</p>
+			                <div class="card-text">
+			                  <p class="card-text pb-3">Édouard Manet</p>
+			                </div>
+			                <div class="d-flex justify-content-between align-items-center">
+			                  <div class="btn-group">
+			                    <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+			                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+			                  </div>
+
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+
+								<div class="col-md-4 col-sm-6">
+			            <div class="card mb-4 box-shadow">
+			              <img  class="card-img-top" src="img\artprints\realism\manet_music_in_the_tuileries_garden.jpg" alt="Card image cap">
+			              <div class="card-body">
+			                <p class="card-text">Music In The Tuileries Garden</p>
+			                <div class="card-text">
+			                  <p class="card-text pb-3">Édouard Manet</p>
 			                </div>
 			                <div class="d-flex justify-content-between align-items-center">
 			                  <div class="btn-group">
@@ -240,16 +478,18 @@
 
 
 
-
+							</div>
 			        </div>
 			      </div>
 			    </div>
-			</body>
+
     </div>
 	</div>
-	</div>
 
 
+
+
+<!--FOOTER -->
 	<footer>
 	<div class="container-fluid padding">
 	<div class="row text-center">
